@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Galiya Amandyk · Portfolio</title>
+<meta name="description" content="Galiya Amandyk — IT planner, PM and developer. Projects from planning to working systems.">
+<meta property="og:title" content="Galiya Amandyk · Portfolio">
+<meta property="og:description" content="Galiya Amandyk — IT planner, PM and developer. Projects from planning to working systems.">
+<meta property="og:image" content="images/galiya-card.png">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<link id="pf-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style id="pf-style">
+/* Layout: blueprint sheet — hero (thesis + plan/build slider), filter rail, project grid, career strip; blue = planning ink, amber = code */
+:root{
+  --paper:#F1F3F8; --surface:#FFFFFF; --soft:#E3E8F1; --ink:#141C33; --ink-2:#4B5671; --ink-3:#7C86A0;
+  --line:#CDD5E3; --grid:rgba(45,86,217,.07); --plan:#2D56D9; --plan-soft:rgba(45,86,217,.10);
+  --build:#D9821A; --build-soft:rgba(217,130,26,.13); --scrim:rgba(14,20,34,.55); --card:#FFFFFF; --card-art:#F0F4FC; --card-line:#C3CDE0; --good:#178A55; --glow-a:rgba(45,86,217,.10); --glow-b:rgba(217,130,26,.08);
+  --f-display:"Bricolage Grotesque","IBM Plex Sans KR",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans KR",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0D1322; --surface:#151D31; --soft:#1C2640; --ink:#E7EBF4; --ink-2:#A2ACC4; --ink-3:#717C97;
+  --line:#28324B; --grid:rgba(124,155,255,.06); --plan:#7E9CFF; --plan-soft:rgba(126,156,255,.14);
+  --build:#F2AC4B; --build-soft:rgba(242,172,75,.15); --scrim:rgba(0,0,0,.65); --card:#1B2440; --card-art:#212D50; --card-line:#33405F; --good:#4CC98C; --glow-a:rgba(126,156,255,.10); --glow-b:rgba(242,172,75,.06); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0D1322; --surface:#151D31; --soft:#1C2640; --ink:#E7EBF4; --ink-2:#A2ACC4; --ink-3:#717C97;
+  --line:#28324B; --grid:rgba(124,155,255,.06); --plan:#7E9CFF; --plan-soft:rgba(126,156,255,.14);
+  --build:#F2AC4B; --build-soft:rgba(242,172,75,.15); --scrim:rgba(0,0,0,.65); --card:#1B2440; --card-art:#212D50; --card-line:#33405F; --good:#4CC98C; --glow-a:rgba(126,156,255,.10); --glow-b:rgba(242,172,75,.06); color-scheme:dark}
+
+*{box-sizing:border-box}
+body{overflow-x:clip;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;
+  background-image:radial-gradient(60vw 50vw at 88% -5%,var(--glow-a),transparent 70%),radial-gradient(55vw 45vw at -10% 35%,var(--glow-b),transparent 70%),radial-gradient(70vw 50vw at 70% 105%,var(--glow-a),transparent 70%);background-attachment:fixed}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--plan);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--f-mono)}
+
+/* top */
+.top{padding-block:18px 0;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.sig{font-family:var(--f-mono);font-size:12px;color:var(--ink-2);letter-spacing:.04em;display:flex;align-items:center;gap:8px}
+.sig b{color:var(--ink);font-weight:500}
+.seg{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px}
+.seg button{border:0;background:none;padding:5px 12px;border-radius:999px;cursor:pointer;font-size:13px;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper);font-weight:600}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:44px;align-items:center;padding-block:40px 36px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--plan);margin:0 0 14px}
+.hero h1{font-family:var(--f-display);font-weight:800;font-size:clamp(36px,5.4vw,64px);line-height:1;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance}
+.hero h1 .p{color:var(--plan)} .hero h1 .b{color:var(--build)}
+.lede{font-size:16.5px;color:var(--ink-2);max-width:34em;margin:0 0 24px}
+.stats{display:flex;flex-wrap:wrap;gap:10px 28px;margin:0;padding:0}
+.stats div{display:flex;flex-direction:column}
+.stats dt{order:2;font-size:12.5px;color:var(--ink-3)}
+.stats dd{margin:0;font-family:var(--f-display);font-weight:700;font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums}
+.stats .b dd{color:var(--build)}
+
+.compare{position:relative;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--line);box-shadow:0 20px 50px -24px rgba(20,30,60,.35);aspect-ratio:640/400;max-width:100%;user-select:none;touch-action:pan-y}
+.compare svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.compare .wire{background:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:16px 16px}
+.compare .handle{position:absolute;top:0;bottom:0;width:2px;background:var(--ink);transform:translateX(-1px);pointer-events:none}
+.compare .handle::after{content:"";position:absolute;top:50%;left:50%;width:34px;height:34px;transform:translate(-50%,-50%);border-radius:50%;background:var(--ink);box-shadow:0 0 0 4px var(--surface)}
+.compare .handle span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;color:var(--paper);font-size:14px;letter-spacing:-2px}
+.compare input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.compare .tag{position:absolute;top:12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:5px;pointer-events:none}
+.compare .tag.l{left:12px;background:var(--plan);color:#fff}
+.compare .tag.r{right:12px;background:var(--build);color:#1b1206}
+.cap{font-size:12.5px;color:var(--ink-3);margin:10px 2px 0;display:flex;gap:8px;align-items:center}
+
+/* filter rail */
+.rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-block:1px solid var(--line)}
+.rail .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding-block:10px}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.fb{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 13px;cursor:pointer;font-size:13.5px;display:inline-flex;align-items:center;gap:7px}
+.fb .n{font-family:var(--f-mono);font-size:11.5px;color:var(--ink-3)}
+.fb[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.fb[aria-pressed="true"] .n{color:inherit;opacity:.7}
+.dot{width:9px;height:9px;border-radius:50%;flex:none}
+.dot.pm{background:var(--plan)} .dot.dev{background:linear-gradient(90deg,var(--plan) 50%,var(--build) 50%)}
+.legend{font-size:12.5px;color:var(--ink-2);display:flex;gap:14px;flex-wrap:wrap;margin-left:auto}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:16px;height:6px;border-radius:2px;display:inline-block}
+.coftr{display:none;align-items:center;gap:6px;font-size:13px}
+.coftr.on{display:inline-flex}
+.coftr button{border:0;background:var(--plan-soft);color:var(--plan);border-radius:999px;padding:4px 10px;cursor:pointer;font-size:12.5px}
+
+/* grid */
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding-block:34px 14px;flex-wrap:wrap}
+.sec-h h2{font-family:var(--f-display);font-size:26px;font-weight:700;letter-spacing:-.02em;margin:0}
+.sec-h p{margin:0;color:var(--ink-3);font-size:13.5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:18px;padding-bottom:20px}
+.card{display:flex;flex-direction:column;text-align:left;border:1px solid var(--card-line);background:var(--card);box-shadow:0 1px 2px rgba(20,30,60,.06),0 6px 18px -10px rgba(20,30,60,.25);border-radius:var(--r);overflow:hidden;cursor:pointer;padding:0;transition:transform .18s,box-shadow .18s,border-color .18s;min-width:0}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(20,30,60,.45);border-color:color-mix(in srgb,var(--plan) 40%,var(--line))}
+.card .art{position:relative;aspect-ratio:16/7;background-color:var(--card-art);background-image:radial-gradient(circle,color-mix(in srgb,var(--plan) 22%,transparent) 1.1px,transparent 1.6px);background-size:12px 12px;background-position:6px 6px;border-bottom:1px solid var(--card-line);overflow:hidden}
+.card .art svg{width:100%;height:100%;display:block}
+.card .art img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.card .art .shots{position:absolute;right:8px;bottom:8px;font-family:var(--f-mono);font-size:11px;background:var(--scrim);color:#fff;border-radius:5px;padding:2px 7px}
+.card .bd{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1;min-width:0}
+.kind{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;border-radius:5px;padding:2px 7px;width:max-content}
+.kind.pm{background:var(--plan-soft);color:var(--plan)}
+.kind.dev{background:var(--build-soft);color:var(--build)}
+.meta-l{font-size:12.5px;color:var(--ink-3);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.card h3{font-family:var(--f-display);font-size:19px;line-height:1.25;font-weight:700;letter-spacing:-.01em;margin:0;text-wrap:balance}
+.card p{margin:0;color:var(--ink-2);font-size:14px}
+.card .foot{margin-top:auto;padding-top:6px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.cyc{display:flex;gap:3px}
+.cyc i{width:22px;height:6px;border-radius:2px;background:var(--soft)}
+.cyc i.on{background:var(--plan)} .cyc i.on.bd{background:var(--build)}
+.more{font-size:12.5px;color:var(--plan);font-weight:500;white-space:nowrap}
+
+/* career strip */
+.career{padding-block:10px 40px}
+.track{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 14px}
+.lanes{position:relative;display:grid;gap:8px}
+.lane{position:relative;height:26px}
+.lane .lbl{position:absolute;left:0;top:-1px;font-size:11px;color:var(--ink-3);font-family:var(--f-mono)}
+.bar{position:absolute;top:0;height:26px;border-radius:6px;border:0;cursor:pointer;padding:0}
+.bar.work{background:var(--plan)} .bar.work.dv{background:linear-gradient(90deg,var(--plan),var(--build))}
+.bar.study{background:repeating-linear-gradient(45deg,var(--soft) 0 5px,transparent 5px 10px);border:1px solid var(--line);cursor:default}
+.bar[aria-pressed="true"]{outline:2px solid var(--ink);outline-offset:2px}
+.axis{position:relative;height:18px;margin-top:6px;border-top:1px solid var(--line)}
+.axis span{position:absolute;top:3px;transform:translateX(-50%);font-family:var(--f-mono);font-size:10.5px;color:var(--ink-3)}
+.cos{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.co{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 11px;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:1px;font-size:13.5px}
+.co small{font-family:var(--f-mono);font-size:11px;color:var(--ink-3)}
+.co[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.co.study{cursor:default;opacity:.75;border-style:dashed}
+
+.contact{border-top:1px solid var(--line);padding-block:40px 56px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:28px 48px;align-items:center}
+.contact h2{font-family:var(--f-display);font-size:clamp(28px,4vw,40px);line-height:1.1;margin:0 0 10px;letter-spacing:-.025em;text-wrap:balance}
+.contact .lead{margin:0;color:var(--ink-2);max-width:30em}
+html[lang="ko"] body{word-break:keep-all}
+/* business card: compact, photo as a small portrait, faint circuit pattern fading in from the right edge */
+.bcard{position:relative;width:100%;background:var(--card);border:1px solid var(--card-line);border-radius:14px;box-shadow:0 2px 4px rgba(20,30,60,.06),0 24px 48px -24px rgba(20,30,60,.45);display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;padding:16px 16px 18px;overflow:hidden;transform:rotate(-1.5deg);transition:transform .25s}
+.bcard:hover{transform:rotate(0)}
+.bcard::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--plan) 50%,var(--build) 50%)}
+.bcard .it{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;-webkit-mask-image:linear-gradient(100deg,transparent 30%,rgba(0,0,0,.35) 60%,#000 100%);mask-image:linear-gradient(100deg,transparent 30%,rgba(0,0,0,.35) 60%,#000 100%)}
+.bcard .ph{position:relative;z-index:1;width:100px;aspect-ratio:4/5;border-radius:10px;overflow:hidden;border:1px solid var(--card-line);background:#fff;align-self:center}
+.bcard .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+.bcard .info{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;min-width:0}
+.bcard .nm{font-family:var(--f-display);font-weight:800;font-size:21px;line-height:1.15;letter-spacing:-.02em;margin:0}
+.bcard .ttl{font-size:12px;font-weight:600;letter-spacing:.02em;color:var(--plan);margin:3px 0 0;white-space:nowrap}
+.bcard .lines{margin-top:auto;display:flex;flex-direction:column;gap:7px}
+.bcard .ln{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:10px;align-items:center}
+.bcard .ln .k{grid-column:1;font-size:10.5px;color:var(--ink-3);line-height:1.25}
+.bcard .ln .v{grid-column:1;font-family:var(--f-mono);font-size:13px;line-height:1.35;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;user-select:all}
+.bcard .cp{grid-column:2;grid-row:1 / span 2;border:1px solid var(--card-line);background:var(--surface);border-radius:6px;font-size:11.5px;padding:3px 9px;cursor:pointer;color:var(--ink-2)}
+.bcard .cp:hover{color:var(--plan);border-color:var(--plan)}
+@media (max-width:760px){.contact{grid-template-columns:minmax(0,1fr)}.bcard{transform:none;max-width:460px}}
+@media (max-width:400px){.bcard{gap:12px;padding:12px 12px 14px}.bcard .ph{width:78px}.bcard .nm{font-size:18px}.bcard .ln .v{font-size:12px}}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 13px;cursor:pointer;font-size:13.5px;display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:var(--ink)}
+.btn.pri{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn:disabled{opacity:.55;cursor:default}
+
+/* detail drawer */
+.ov{position:fixed;inset:0;z-index:30;background:var(--scrim);display:flex;justify-content:flex-end;opacity:0;transition:opacity .2s}
+.ov.show{opacity:1}
+.drawer{width:min(760px,100%);height:100%;background:var(--paper);overflow:auto;transform:translateX(30px);transition:transform .25s;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px);box-shadow:-20px 0 50px -20px rgba(0,0,0,.4)}
+.ov.show .drawer{transform:none}
+.dh{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 20px;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.dh .nav{display:flex;gap:6px}
+.ib{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:var(--surface);cursor:pointer;display:grid;place-items:center;font-size:16px}
+.db{padding:22px 24px 48px;display:flex;flex-direction:column;gap:24px}
+.db h2{font-family:var(--f-display);font-size:clamp(26px,4vw,36px);line-height:1.1;letter-spacing:-.02em;margin:6px 0 8px;text-wrap:balance}
+.db .one{font-size:17px;color:var(--ink-2);margin:0;max-width:36em}
+.blk h4{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px;font-weight:500}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.flow .nd{border:1.5px solid var(--plan);color:var(--plan);background:var(--surface);border-radius:8px;padding:6px 11px;font-family:var(--f-mono);font-size:12.5px;animation:pulse var(--dur) infinite;animation-delay:var(--d)}
+.flow.dv .nd{--hi:var(--build)}
+.flow .ar{color:var(--ink-3);font-size:13px}
+@keyframes pulse{0%,100%{box-shadow:none}8%{box-shadow:0 0 0 4px var(--plan-soft);background:var(--plan-soft)}16%{box-shadow:none}}
+.flow.dv .nd{border-color:var(--build);color:var(--build)}
+.flow.dv .nd{animation-name:pulseb}
+@keyframes pulseb{0%,100%{box-shadow:none}8%{box-shadow:0 0 0 4px var(--build-soft);background:var(--build-soft)}16%{box-shadow:none}}
+.stages{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px}
+.stages div{border-radius:6px;padding:7px 6px;text-align:center;font-size:12.5px;background:var(--soft);color:var(--ink-3)}
+.stages div.on{background:var(--plan);color:#fff;font-weight:600}
+.stages div.on.bd{background:var(--build);color:#1b1206}
+.did{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;max-width:44em}
+.did li::marker{color:var(--plan)}
+.subs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:8px}
+.subs div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 11px;font-size:13.5px}
+.subs small{display:block;color:var(--ink-3);font-size:12px}
+.subs .nb{border-color:color-mix(in srgb,var(--plan) 45%,var(--line))}
+.win{display:inline-flex;align-items:baseline;gap:8px;width:max-content;max-width:100%;border-radius:8px;padding:5px 10px;background:color-mix(in srgb,var(--good) 13%,transparent);color:var(--good);font-size:13px;font-weight:600}
+.win b{font-family:var(--f-display);font-size:18px;font-weight:800;letter-spacing:-.01em}
+.win.big{margin-top:14px;padding:10px 16px;gap:12px;font-size:15px}
+.win.big b{font-size:34px;line-height:1}
+.win-note{margin:8px 0 0;font-size:14px;color:var(--ink-2);max-width:36em}
+.nbadge{display:inline-flex;align-items:baseline;gap:5px;font-size:12px;font-weight:600;line-height:1.35;border-radius:5px;padding:3px 8px;width:max-content;max-width:100%;border:1px dashed currentColor}
+.nbadge b{font-weight:400}
+.nbadge.pm{color:var(--plan);background:var(--plan-soft)}
+.nbadge.dev{color:var(--build);background:var(--build-soft)}
+.nbadge.sm{margin-top:6px;font-size:11px;padding:2px 6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-family:var(--f-mono);font-size:12px;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:3px 8px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:10px}
+.facts div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 12px}
+.facts dt{font-size:11.5px;color:var(--ink-3)} .facts dd{margin:0;font-size:14px;font-weight:500}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:10px}
+.shot{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface);aspect-ratio:16/10}
+.shot button.open{all:unset;cursor:zoom-in;display:block;width:100%;height:100%}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.shot .rm{position:absolute;top:6px;right:6px;border:0;border-radius:6px;background:var(--scrim);color:#fff;font-size:12px;padding:3px 8px;cursor:pointer}
+.drop{border:1.5px dashed var(--line);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:18px;text-align:center;color:var(--ink-3);font-size:13px;aspect-ratio:16/10;cursor:pointer;background:transparent}
+.drop:hover,.drop.over{border-color:var(--plan);color:var(--plan);background:var(--plan-soft)}
+.drop b{font-size:22px;line-height:1;font-weight:400}
+.note{font-size:12.5px;color:var(--ink-3);margin:8px 0 0}
+.lb{position:fixed;inset:0;z-index:40;background:rgba(5,8,15,.9);display:flex;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));cursor:zoom-out}
+.lb img{max-width:100%;max-height:100%;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:50;background:var(--ink);color:var(--paper);padding:10px 16px;border-radius:9px;font-size:13.5px;max-width:calc(100vw - 32px);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:minmax(0,1fr);gap:28px;padding-block:24px 28px}
+  .legend{margin-left:0}
+  .db{padding:18px 16px 40px}
+  .dh{padding:10px 16px}
+  .stages{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="application/json" id="pf-data">{"savedAt":1794827519648,"shots":{"global-channel":[{"id":"44e71af6a8158901063fd18bffe6d648","url":"images/44e71af6a8158901063fd18bffe6d648.png"},{"id":"dc691698ad42e3e17b5b1d425bd64ff8","url":"images/dc691698ad42e3e17b5b1d425bd64ff8.png"},{"id":"85479e91fd425a187366070bf69ab0bd","url":"images/85479e91fd425a187366070bf69ab0bd.png"}],"staypass":[{"id":"08b73576d08f6366fa1977dc56eadb0a","url":"images/08b73576d08f6366fa1977dc56eadb0a.png"}],"cert-platform":[{"id":"cca3f3ba651b805f5bf2499010e9b929","url":"images/cca3f3ba651b805f5bf2499010e9b929.png"},{"id":"ff819dbfac2326ce9f36f29fbab70f21","url":"images/ff819dbfac2326ce9f36f29fbab70f21.png"}],"agency-clients":[{"id":"27ededd93495b3a2b66efdc2d24f74db","url":"images/27ededd93495b3a2b66efdc2d24f74db.png"},{"id":"84ea88b6399690d137000df4cd8c4f04","url":"images/84ea88b6399690d137000df4cd8c4f04.png"},{"id":"f621b38d101136974f0f88e3c6d10ce6","url":"images/f621b38d101136974f0f88e3c6d10ce6.png"},{"id":"6ec48d1d43483883282053eb246a9d35","url":"images/6ec48d1d43483883282053eb246a9d35.png"},{"id":"77354e4129bf6077a787d62a69591094","url":"images/77354e4129bf6077a787d62a69591094.png"},{"id":"c650213193145e45a30aac648289c609","url":"images/c650213193145e45a30aac648289c609.png"}],"b2b-booking":[{"id":"b184f2fa3464c0621d270b9edd26d253","url":"images/b184f2fa3464c0621d270b9edd26d253.png"}],"testforte":[{"id":"601239da48564e1828da5f4e0f27f27f","url":"images/601239da48564e1828da5f4e0f27f27f.png"},{"id":"e7ae726678975112c6a19028510c0918","url":"images/e7ae726678975112c6a19028510c0918.png"},{"id":"cc37efdeb3269d32ce4637454ccfd14c","url":"images/cc37efdeb3269d32ce4637454ccfd14c.png"},{"id":"29a3d9494c6c5f86eb4de0723dc134e1","url":"images/29a3d9494c6c5f86eb4de0723dc134e1.png"}],"ota-cms":[{"id":"1a65a6e7082dc0fc5cff81cc9fd894e2","url":"images/1a65a6e7082dc0fc5cff81cc9fd894e2.png"}],"testforte-web":[{"id":"47599a55b0738d7d3fa5edb196d452d5","url":"images/47599a55b0738d7d3fa5edb196d452d5.png"}]}}</script>
+<script id="pf-script">
+(function(){
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const DATA = JSON.parse($('#pf-data').textContent);
+DATA.shots = DATA.shots || {};
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let lang = 'en'; try { if (localStorage.getItem('pf-lang') === 'ko') lang = 'ko'; } catch(e) {}
+let kindF = 'all', coF = null, openId = null;
+let assets = null, art = null; // editor capabilities (null for viewers)
+
+const STAGES = {en:['Plan','Design','Build','Test','Launch','Operate'], ko:['기획','설계','개발','테스트','런칭','운영']};
+const SK = ['plan','design','build','test','launch','run'];
+
+const CO = {
+  handys:{en:'Handys Inc.', ko:'(주)핸디즈', from:2025.5, to:2026.83, y:'2025.07 – 2026.10', place:{en:'Seoul / Incheon',ko:'서울 · 인천'}},
+  onysoft:{en:'Onysoft (Onycom)', ko:'어니소프트(어니컴)', from:2023.83, to:2025.5, y:'2023.11 – 2025.06', place:{en:'Seoul',ko:'서울'}},
+  iocenter:{en:'IOcenter', ko:'IOcenter', from:2023.08, to:2023.67, y:'2023.02 – 2023.08', place:{en:'Gyeonggi',ko:'경기'}},
+  homecredit:{en:'Bank Home Credit', ko:'Bank Home Credit', from:2018.08, to:2019.58, y:'2018.02 – 2019.07', place:{en:'Almaty, Kazakhstan',ko:'카자흐스탄 알마티'}},
+  itinvest:{en:'IT Invest Group', ko:'IT Invest Group', from:2016.75, to:2018.08, y:'2016.10 – 2018.01', place:{en:'Almaty, Kazakhstan',ko:'카자흐스탄 알마티'}}
+};
+const STUDY = [
+  {en:'KIST research internship', ko:'KIST 연구 인턴', from:2020.0, to:2020.5, y:'2020.01 – 2020.06'},
+  {en:'Sookmyung Women’s Univ. · M.S. in MIS', ko:'숙명여대 대학원 · MIS 석사', from:2021.17, to:2023.67, y:'2021.03 – 2023.08'}
+];
+
+const P = [
+ {id:'b2b-booking', kind:'dev', co:'handys', win:{n:'2–3×', en:'sales growth after automation', ko:'자동화 이후 매출 성장'}, st:SK, flow:['Gmail','Scraper','Intake','PMS API','Booking','Email'], stack:['Gmail API','Google API','PMS API','Scraping','Dashboard'],
+  en:{t:'B2B Automated Booking System', one:'Booking slips in partner emails turn into confirmed hotel bookings without anyone typing them in.', role:'Sole planner, developer and operator',
+   b:['Took it from first spec to launch alone: development, environment setup, release and ongoing improvements','Booking emails arrive through the Gmail API and their details are scraped automatically','Bookings are created automatically through the internal PMS API, with a matching cancellation pipeline','Rate tables, admin tools and a dashboard; automatic confirmation and cancellation emails; improved stop-sell handling']},
+  ko:{t:'B2B 자동 숙박 예약 시스템', one:'파트너사 이메일 예약 슬립이 사람 손을 거치지 않고 확정 예약으로 바뀌는 시스템', role:'단독 기획 · 개발 · 운영',
+   b:['첫 기획부터 개발, 환경 설정, 런칭, 지속적 개선까지 전 과정을 단독 수행','Gmail API 연동으로 예약 메일 접수 및 예약 정보 자동 스크래핑','내부 PMS API를 활용한 자동 예약 생성 및 취소 파이프라인 개발','가격 테이블·관리 기능·대시보드 구축, 확정/취소 확인서 자동 발송, 스탑세일 기능 개선']}},
+ {id:'ota-cms', kind:'dev', co:'handys', st:SK, flow:['OTA','Cron','CMS','ARI feed','Close','Confirm'], stack:['REST API','ARI','Cron','GoodChoice','NAVER Place'],
+  en:{t:'OTA Hotel Automation CMS', one:'A CMS that keeps Yeogieottae and NAVER bookings in sync with the hotel, automatically.', role:'Sole planner and developer',
+   b:['Owned the full lifecycle: planning, development, release and operations','Collects bookings and cancellations from partner systems automatically, with cron jobs','Takes in real-time rate and inventory (ARI) feeds and closes sold-out dates automatically','Sends booking confirmations without manual work']},
+  ko:{t:'OTA 연동 숙박 자동화 CMS', one:'여기어때·네이버 예약을 호텔 운영과 자동으로 동기화하는 CMS', role:'단독 기획 · 개발',
+   b:['기획, 개발, 릴리즈, 운영 전 라이프사이클 전담','파트너사 시스템에서 예약·취소 자동 수집 (cron job)','실시간 가격·재고(ARI) 피드 수렴 및 자동 마감','예약 확인서 자동 발송 기능 구현']}},
+ {id:'global-channel', kind:'dev', co:'handys', win:{n:{en:'₩100–200M / mo',ko:'월 1~2억 원'}, en:'new revenue, zero commission', ko:'신규 매출 · 수수료 0원', note:{en:'An in-house sales channel, not an OTA, so every booking comes in commission-free. Revenue keeps growing month over month.', ko:'OTA가 아닌 자체 신규 판매 채널이라 수수료 없이 매출이 발생하며, 매월 계속 성장하고 있습니다.'}}, st:SK, flow:['Google HC','Site','PayPal','PMS','Guest'], stack:['Google Hotel Center','PayPal','PMS API','Web'], link:'https://stay.plott.co.kr/global',
+  en:{t:'Global Booking Channel', one:'Hotels shown on Google worldwide, booked and paid online, landing straight in the PMS.', role:'Squad lead, planner and developer',
+   b:['Led the squad and owned planning, development and maintenance of the global booking platform','Direct Google Hotel Center integration for worldwide exposure','PayPal payment (PG) integration','Global bookings created in the internal PMS automatically','The new channel brings in about ₩100–200M a month with no OTA commission, and keeps growing']},
+  ko:{t:'글로벌 예약 채널', one:'구글에 노출된 호텔을 해외 고객이 온라인으로 예약·결제하면 내부 PMS로 바로 연결', role:'스쿼드 리드 · 기획 · 개발',
+   b:['스쿼드 리드로서 글로벌 예약 플랫폼 기획, 개발, 유지보수 전담','Google Hotel Center direct 연동으로 글로벌 채널 노출','PayPal PG 결제 연동','글로벌 예약의 내부 PMS 자동 생성 연동','신규 채널로 매월 약 1~2억 원 매출 발생 (OTA 수수료 없음), 지속 성장 중']}},
+ {id:'bqms', kind:'dev', co:'handys', st:SK, flow:['Legacy','Interview','Web app','Tablet','Branch'], stack:['Web','Android','Database','Automation'],
+  en:{t:'BQMS Branch System & Tablet App', one:'Guests, rooms and bookings in one tool for branch managers, plus an Android tablet app on site.', role:'Planner and sole developer',
+   b:['Analyzed legacy data and interviewed branch staff to map real workflows','Planned and single-handedly built the web platform for guests, rooms and bookings','Built an Android tablet app for branch operations','Automated and streamlined branch managers’ daily work']},
+  ko:{t:'지점 통합 관리 시스템(BQMS) · 태블릿 앱', one:'게스트·객실·예약을 한곳에서 관리하는 지점 매니저용 시스템과 현장용 안드로이드 태블릿 앱', role:'기획 · 단독 개발',
+   b:['레거시 데이터 분석 및 실제 지점 업무 파악·인터뷰','게스트, 객실, 예약 통합 관리 웹 플랫폼 기획 및 단독 개발','지점 운영용 Android 태블릿 전용 앱 직접 개발','지점 매니저 업무 자동화·최적화']}},
+ {id:'staypass', kind:'dev', co:'handys', st:['plan','design','build','test','launch'], flow:['Partner','Spec','Modules','Admin'], stack:['Web','Admin','Remote team'],
+  en:{t:'Staypass Partner Management', one:'A partner management platform delivered together with a remote team in Indonesia.', role:'Planner, remote team lead and developer',
+   b:['Planned the partner management system','Led the Indonesian remote team to finish the platform’s core modules','Helped develop the core features']},
+  ko:{t:'Staypass 제휴사 관리 시스템', one:'인도네시아 원격 개발팀과 함께 완성한 제휴 파트너 관리 플랫폼', role:'기획 · 원격팀 리드 · 부분 개발',
+   b:['제휴 파트너 관리 시스템 기획','인도네시아 원격 개발팀 리딩으로 제휴 플랫폼 핵심 모듈 완성','핵심 기능 개발 참여']}},
+ {id:'front-desk', kind:'pm', co:'handys', st:['plan','design','test','launch'], flow:['Guest','Tablet','Check-in','Guide'], stack:['Tablet','UX','Remote team'],
+  en:{t:'Front-desk Tablet Service', one:'Check-in and guidance on a tablet for international guests.', role:'Planner and PM',
+   b:['Planned the service and ran it as PM','Designed the check-in and guidance experience for international guests','Ran the remote development process with the Indonesian team: schedule, specs and handover']},
+  ko:{t:'프론트데스크 태블릿 서비스', one:'해외 투숙객을 위한 태블릿 체크인·안내 서비스', role:'기획 · PM',
+   b:['서비스 기획 및 PM 수행','글로벌 투숙객의 체크인·안내 경험 설계','인도네시아 원격 개발팀 일정 관리, 스펙 전달 및 개발 프로세스 총괄']}},
+ {id:'lyfe', kind:'pm', co:'handys', st:['plan','design'], flow:['Partner','Meeting','API spec','Link-up'], stack:['API','English','Partnership'],
+  en:{t:'Lyfe Long-stay Partnership', one:'Communication lead for a global long-stay project with overseas partners.', role:'Communication lead',
+   b:['Ran business meetings with overseas partners','Coordinated API integration work between both sides','Led technical video calls and interpreted them']},
+  ko:{t:'장기 스테이 ‘Lyfe’ 글로벌 프로젝트', one:'해외 파트너사와 함께한 장기 스테이 글로벌 프로젝트의 커뮤니케이션 리드', role:'커뮤니케이션 리드',
+   b:['해외 파트너사와의 비즈니스 미팅 진행','API 연동 협업 조율','기술 화상 회의 진행 및 통역 총괄']}},
+ {id:'testforte', kind:'pm', nb:1, co:'onysoft', st:['plan','design','test','launch','run'], flow:['Needs','IA','Storyboard','Dev','QA','Release'], stack:['IA','Storyboard','QA','Test automation'], link:'https://www.youtube.com/watch?v=OxwV_16C54s',
+  en:{t:'Testforte', one:'A web platform for testing apps on remote mobile devices and automating the tests.', role:'Platform lead and planner',
+   b:['Led the whole platform: planning, IA, flowcharts and storyboards, then handover to developers','Ran QA, change management and continuous feature improvement','Planned the web test automation tool and designed its UI/UX','Wrote the user manual and product introduction, and produced manual videos','Handled client requirements after presales']},
+  ko:{t:'Testforte', one:'원격 모바일 디바이스 앱 테스트 및 테스트 자동화 웹 플랫폼', role:'플랫폼 리드 · 기획',
+   b:['플랫폼 전체 리드: 기획, IA 설계, 플로우 차트, 스토리보드 작성 후 개발팀 전달','QA, 변경 관리 및 지속적 기능 개선 주도','웹 테스트 자동화 툴 기획 및 UI/UX 설계','유저 매뉴얼, 소개서, 매뉴얼 영상 제작','Presales 후 고객사 요구사항 처리 및 기능 개선 관리']}},
+ {id:'testforte-web', kind:'dev', co:'onysoft', st:SK, flow:['Research','Wireframe','React','Publish'], stack:['React','JavaScript','HTML/CSS','UI/UX'], link:'https://testfortemain.creatorlink.net/',
+  en:{t:'Testforte Website & Docs', one:'A brand site redesign, plus product and manual pages I designed and coded myself.', role:'Planner, designer and front-end developer',
+   b:['Led planning of the website redesign for branding and user experience','Designed and published key pages, such as the product introduction and user manual, with React, JavaScript and HTML/CSS','Ran UI/UX research, screen design and user testing']},
+  ko:{t:'Testforte 홈페이지 · 문서 페이지', one:'공식 홈페이지 고도화 개편과 직접 디자인·개발한 소개/매뉴얼 페이지', role:'기획 · 디자인 · 프론트엔드 개발',
+   b:['서비스 브랜딩과 사용자 경험 향상을 위한 홈페이지 고도화 개편 기획 주도','React, JavaScript, HTML/CSS로 소개서·유저 매뉴얼 등 핵심 페이지 직접 디자인 및 퍼블리싱','UI/UX 리서치, 화면 설계, 사용자 테스트 수행']}},
+ {id:'agency-clients', kind:'pm', co:'iocenter', st:['plan','design','test','run'], flow:['Brief','Policy','IA','Figma','QA'], stack:['Figma','IA','Storyboard','Back-office'],
+  en:{t:'Client Web & App Planning', one:'Five client products planned end to end at a digital agency.', role:'Planner',
+   b:['Defined requirements with clients, then wrote service policy, IA, functional specs, flowcharts and screen designs','User-centered UI/UX, wireframes and storyboards in Figma','Designed user-facing (front) and admin (back-office) modules','Led communication across development, design and business','QA testing, service monitoring and troubleshooting'],
+   subs:[['Popeyes Recruitment','Web/App · planning, storyboards',1],['Semosa','Web · planning, storyboards',1],['Geomjin-gaja (health checkup)','Web/App · planning, storyboards',1],['Pohang Digital Mayor’s Office','Storyboards'],['YOU TOYOTA','App · feature improvement planning']]},
+  ko:{t:'클라이언트 웹·앱 기획', one:'에이전시에서 처음부터 끝까지 기획한 5개의 클라이언트 서비스', role:'기획',
+   b:['외부 클라이언트 요구사항 정의부터 서비스 정책, IA, 기능 정의서, 플로우 차트, 화면 설계까지 수행','Figma 기반 사용자 중심 UI/UX, Wireframe, 스토리보드 제작','사용자(Front) 및 관리자(Back-office) 모듈 설계','개발·디자인·사업 등 유관 부서 커뮤니케이션 리드','QA 테스팅, 서비스 모니터링 및 이슈 대응'],
+   subs:[['파파이스 채용','웹/앱 · 기획, 스토리보드',1],['세모사','웹 · 기획, 스토리보드',1],['검진가자','웹/앱 · 기획, 스토리보드',1],['포항시 디지털시장실','스토리보드'],['YOU TOYOTA (유 토요타)','앱 · 기능 개선 기획']]}},
+ {id:'home-credit', kind:'pm', co:'homecredit', st:['plan','design','test','launch','run'], flow:['Pain','AS-IS','TO-BE','Backlog','Sprint','PIR'], stack:['Agile','Jira','Confluence','AS-IS/TO-BE'],
+  en:{t:'Legacy Banking Modernization', one:'Agile modernization of legacy banking services, from pain points to sprints.', role:'PM team · lead specialist',
+   b:['Managed the product lifecycle with Agile','Analyzed pain points in existing systems and defined modernization requirements','Defined TO-BE requirements from AS-IS analysis and controlled scope','Prioritized the backlog, managed change and ran sprints in Jira','Set up post-implementation reviews and retrospectives in Confluence']},
+  ko:{t:'레거시 금융 서비스 현대화', one:'페인포인트 분석부터 스프린트 운영까지, Agile 기반 레거시 서비스 현대화', role:'PM팀 · 리드 스페셜리스트',
+   b:['Agile 방법론 기반 프로덕트 라이프사이클 총괄','기존 시스템 페인포인트 분석 및 현대화 요구사항 도출','AS-IS 분석 기반 TO-BE 요구사항 정의 및 스코프 관리','Jira 백로그 우선순위, 변경 관리, 스프린트 운영','Confluence 기반 사후 검토(PIR) 및 회고 프로세스 구축']}},
+ {id:'cert-platform', kind:'pm', nb:1, co:'itinvest', st:['plan','design','test','launch','run'], flow:['Interview','BPMN','Wireframe','Spec','QA','Training'], stack:['BPMN','Balsamiq','Functional spec','QA'],
+  en:{t:'National Certification Platform', one:'A verification portal for Kazakhstan’s national medical device and pharmaceutical certification center.', role:'PM assistant and business analyst',
+   b:['Interviewed staff at every verification stage to gather multi-stakeholder requirements','Modeled business processes in BPMN and structured the IA','Built wireframes and prototypes in Balsamiq and Dia','Wrote functional specs, ran QA and presented demos to executives','Wrote user guides and trained client staff']},
+  ko:{t:'국가 인증 검증 플랫폼', one:'카자흐스탄 국가 의료기기·의약품 인증 센터를 위한 검증 포털', role:'PM 어시스턴트 · 비즈니스 분석가',
+   b:['검증 단계별 현업 담당자 인터뷰로 다자간 요구사항 수집·정의','BPMN 기반 비즈니스 프로세스 모델링 및 IA 구조화','Balsamiq, Dia로 Wireframe·프로토타입 제작','기능 정의서 작성, QA 수행, 임원진 대상 시연','사용자 가이드 제작 및 고객사 교육']}}
+];
+
+const T = {
+ en:{sig:'Portfolio', eyebrow:'IT planner · project manager · developer', h1:'From <span class="p">wireframe</span> to <span class="b">working system</span>.',
+  lede:'I’m Galiya Amandyk, an IT planner and PM with 7 years 8 months across Korea and Kazakhstan. On some projects I wrote the plan. On others I wrote the plan and the code.',
+  st:[['7y 8m','experience'],[null,'projects'],[null,'built hands-on'],['3','languages: KO · EN · RU']],
+  plan:'Plan', build:'Build', cap:'Drag across the screen to compare my wireframe with the finished screen.',
+  all:'All projects', pm:'PM', dev:'PM + Developer', lgPm:'Planning & management', lgDev:'I wrote the code',
+  work:'Projects', workSub:'Open a project to see the system flow, the stages I owned and screenshots.', co:'Company', clear:'Show all',
+  career:'Career map', careerSub:'Click a company to see its projects.', lnWork:'Work', lnStudy:'Study',
+  view:'View project', shots:n => n+' screen'+(n>1?'s':''),
+  flow:'How it works', stages:'Stages I owned', did:'What I did', subs:'Client projects', stack:'Tools & tech', screens:'Screens',
+  role:'Role', period:'Period', where:'Where', company:'Company', link:'Open live project', close:'Close', prev:'Previous project', next:'Next project',
+  add:'Add screenshots', addHint:'PNG or JPG, up to 20 MB each. Drop files here or click.', addNote:'Only you can see this. Screenshots are saved to the page for everyone who opens it.',
+  up:(i,n) => 'Uploading '+i+' of '+n+'…', saved:'Screenshots saved', removed:'Screenshot removed', rm:'Remove', rm2:'Click again',
+  nbPm:'New service · business model planned and designed by me', nbDev:'New service · planned and built solo, start to finish', nbSub:'New service business model', contact:'Let’s build the next one', lead:'Planning, PM and full-stack development, from first idea to running service.', ttl:'IT Planner · PM · Developer', kE:'Email', kP:'Phone', copy:'Copy', copied:'Copied', copyFail:'Select the text and copy it', empty:'No projects match this filter.'},
+ ko:{sig:'포트폴리오', eyebrow:'IT 기획자 · PM · 개발자', h1:'<span class="p">와이어프레임</span>에서 <span class="b">동작하는 시스템</span>까지.',
+  lede:'한국과 카자흐스탄에서 7년 8개월 경력의 IT 기획자·PM 아만드크 갈리아입니다. 어떤 프로젝트는 기획을, 어떤 프로젝트는 기획과 개발을 함께 맡았습니다.',
+  st:[['7년 8개월','경력'],[null,'프로젝트'],[null,'직접 개발'],['3','언어: 한·영·러']],
+  plan:'기획', build:'개발', cap:'화면을 좌우로 드래그해서 기획안과 완성된 화면을 비교해 보세요.',
+  all:'전체', pm:'PM', dev:'PM + 개발', lgPm:'기획 · 관리', lgDev:'직접 개발',
+  work:'프로젝트', workSub:'프로젝트를 열면 시스템 흐름, 담당 단계, 스크린샷을 볼 수 있습니다.', co:'회사', clear:'전체 보기',
+  career:'경력 지도', careerSub:'회사를 클릭하면 해당 프로젝트만 볼 수 있습니다.', lnWork:'경력', lnStudy:'학업',
+  view:'자세히 보기', shots:n => '화면 '+n+'개',
+  flow:'시스템 흐름', stages:'담당 단계', did:'주요 업무', subs:'클라이언트 프로젝트', stack:'툴 · 기술', screens:'화면',
+  role:'역할', period:'기간', where:'근무지', company:'회사', link:'프로젝트 보기', close:'닫기', prev:'이전 프로젝트', next:'다음 프로젝트',
+  add:'스크린샷 추가', addHint:'PNG 또는 JPG, 파일당 최대 20MB. 파일을 끌어다 놓거나 클릭하세요.', addNote:'이 영역은 본인에게만 보입니다. 추가한 스크린샷은 페이지에 저장되어 모든 방문자에게 보입니다.',
+  up:(i,n) => n+'개 중 '+i+'번째 업로드 중…', saved:'스크린샷이 저장되었습니다', removed:'스크린샷을 삭제했습니다', rm:'삭제', rm2:'한 번 더 클릭',
+  nbPm:'신규 서비스 비즈니스 모델 직접 기획 및 설계', nbDev:'신규 서비스 단독 기획·개발 (처음부터 끝까지)', nbSub:'신규 서비스 비즈니스 모델 직접 기획·설계', contact:'다음 프로젝트를 함께 만들어요', lead:'아이디어부터 운영까지 기획, PM, 풀스택 개발을 맡을 수 있습니다.', ttl:'IT 기획자 · PM · 개발자', kE:'이메일', kP:'전화', copy:'복사', copied:'복사했습니다', copyFail:'텍스트를 선택해서 복사해 주세요', empty:'조건에 맞는 프로젝트가 없습니다.'}
+};
+const t = () => T[lang];
+const L = p => p[lang];
+const EMAIL = 'galiya-gpm.kz@mail.ru', PHONE = '010-2175-5079';
+const shotsOf = id => DATA.shots[id] || [];
+const srcOf = s => 'images/' + s.id + '.png';
+
+/* ---------- illustrations ---------- */
+function miniFlow(p){
+  const W = 320, H = 140, n = p.flow.length, pad = 34;
+  const pts = p.flow.map((_, i) => [pad + i * (W - 2*pad) / (n - 1), 62 + (i % 2 ? 16 : -16)]);
+  let d = 'M' + pts[0].join(' ');
+  for (let i = 1; i < n; i++){ const [x0,y0] = pts[i-1], [x1,y1] = pts[i], mx = (x0+x1)/2; d += ' C'+mx+' '+y0+' '+mx+' '+y1+' '+x1+' '+y1; }
+  const dev = p.kind === 'dev', pc = 'var(--plan)', bc = dev ? 'var(--build)' : 'var(--plan)';
+  let s = '<svg viewBox="0 0 '+W+' '+H+'" aria-hidden="true"><path d="'+d+'" fill="none" stroke="'+pc+'" stroke-width="1.6" stroke-dasharray="4 4" opacity=".7"/>';
+  pts.forEach(([x,y], i) => {
+    const on = dev && i > 0 && i < n - 1;
+    s += '<circle cx="'+x+'" cy="'+y+'" r="11" fill="var(--surface)" stroke="'+(on?bc:pc)+'" stroke-width="1.6"/>';
+    s += '<circle cx="'+x+'" cy="'+y+'" r="3.5" fill="'+(on?bc:pc)+'"/>';
+    s += '<text x="'+x+'" y="'+(y + (i % 2 ? 28 : -18))+'" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9.5" fill="var(--ink-2)">'+esc(p.flow[i])+'</text>';
+  });
+  if (!RM) for (let k = 0; k < 2; k++) s += '<circle r="4" fill="'+bc+'"><animateMotion dur="'+(n*0.9)+'s" begin="'+(k*n*0.45)+'s" repeatCount="indefinite" path="'+d+'"/></circle>';
+  return s + '</svg>';
+}
+
+function uiSketch(mode){
+  const wire = mode === 'wire';
+  const st = (fill, extra) => wire ? 'fill="none" stroke="var(--plan)" stroke-width="1.3" stroke-dasharray="5 4"' : 'fill="'+fill+'"'+(extra||'');
+  const R = (x,y,w,h,f,r) => '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="'+(r??4)+'" '+st(f)+'/>';
+  const note = (x,y,txt) => wire ? '<g><circle cx="'+x+'" cy="'+y+'" r="8" fill="var(--plan)"/><text x="'+x+'" y="'+(y+3.5)+'" text-anchor="middle" font-size="9.5" font-family="JetBrains Mono, monospace" fill="#fff">'+txt[0]+'</text><text x="'+(x+12)+'" y="'+(y+3.5)+'" font-size="10" font-family="JetBrains Mono, monospace" fill="var(--plan)">'+txt.slice(2)+'</text></g>' : '';
+  let s = '<svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">';
+  if (!wire) s += '<rect width="640" height="400" fill="var(--surface)"/>';
+  s += R(0,0,640,44,'var(--ink)',0);
+  s += wire ? '<circle cx="24" cy="22" r="8" fill="none" stroke="var(--plan)" stroke-dasharray="3 3"/>' : '<circle cx="24" cy="22" r="8" fill="var(--build)"/>';
+  s += R(40,16,90,12,'var(--ink-2)',3) + R(548,11,76,22,'var(--build)',6);
+  s += R(0,44,124,356,'var(--soft)',0);
+  for (let i = 0; i < 6; i++) s += R(16,66+i*30,i===0?92:70+((i*17)%22),12,i===0?'var(--plan)':'var(--line)',3);
+  const kv = ['128','92%','₩4.2M'], kc = ['var(--plan)','var(--build)','var(--ink)'];
+  for (let i = 0; i < 3; i++){
+    const x = 142 + i*162;
+    s += R(x,62,146,72,'var(--paper)',8) + R(x+12,74,60,8,'var(--line)',3);
+    s += wire ? R(x+12,94,80,24,'',4) : '<text x="'+(x+12)+'" y="116" font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="26" fill="'+kc[i]+'">'+kv[i]+'</text>';
+  }
+  s += R(142,150,300,154,'var(--paper)',8);
+  const hs = [46,70,58,92,80,108,96,124];
+  hs.forEach((h,i) => { s += R(162+i*34,288-h,20,h,i%3===2?'var(--build)':'var(--plan)',3); });
+  s += R(458,150,166,154,'var(--paper)',8);
+  for (let i = 0; i < 5; i++){
+    s += wire ? '<circle cx="478" cy="'+(176+i*26)+'" r="7" fill="none" stroke="var(--plan)" stroke-dasharray="3 2"/>' : '<circle cx="478" cy="'+(176+i*26)+'" r="7" fill="'+(i%2?'var(--build)':'var(--plan)')+'" opacity=".85"/>';
+    s += R(494,170+i*26,92-(i*13)%30,10,'var(--line)',3);
+  }
+  s += R(142,320,482,62,'var(--paper)',8);
+  for (let i = 0; i < 2; i++) s += R(156,334+i*22,120,10,'var(--line)',3) + R(300,334+i*22,90,10,'var(--line)',3) + R(530,332+i*22,70,14,i?'var(--plan-soft)':'var(--build-soft)',7);
+  s += note(160,147,'A KPI cards') + note(380,147,'B Booking trend') + note(560,147,'C Arrivals') + note(176,316,'D Booking table') + note(530,58,'E CTA');
+  return s + '</svg>';
+}
+
+/* ---------- render ---------- */
+function counts(){ return {all:P.length, pm:P.filter(p => p.kind==='pm').length, dev:P.filter(p => p.kind==='dev').length}; }
+function visible(){ return P.filter(p => (kindF === 'all' || p.kind === kindF) && (!coF || p.co === coF)); }
+function cyc(p){ return '<span class="cyc" aria-hidden="true">'+SK.map(k => '<i class="'+(p.st.includes(k)?'on'+(k==='build'?' bd':''):'')+'"></i>').join('')+'</span>'; }
+const winN = w => typeof w.n === 'string' ? w.n : w.n[lang];
+function winTag(p){ return p.win ? '<span class="win"><b>↗ '+winN(p.win)+'</b>'+esc(p.win[lang])+'</span>' : ''; }
+function nbTag(p){ return (p.kind==='dev'||p.nb) ? '<span class="nbadge '+p.kind+'"><b>★</b>'+esc(p.kind==='dev'?t().nbDev:t().nbPm)+'</span>' : ''; }
+function kindTag(p){ return '<span class="kind '+p.kind+'"><span class="dot '+p.kind+'"></span>'+(p.kind==='dev'?t().dev:t().pm)+'</span>'; }
+
+function cardHTML(p){
+  const x = L(p), sh = shotsOf(p.id);
+  return '<button class="card" data-open="'+p.id+'" aria-label="'+esc(x.t)+'">'+
+    '<div class="art">'+miniFlow(p)+(sh.length ? '<span class="shots">'+t().shots(sh.length)+'</span>' : '')+'</div>'+
+    '<div class="bd">'+kindTag(p)+nbTag(p)+'<span class="meta-l">'+esc(CO[p.co][lang])+' · <span class="mono">'+CO[p.co].y.slice(0,4)+'</span></span>'+
+    '<h3>'+esc(x.t)+'</h3><p>'+esc(x.one)+'</p>'+winTag(p)+'<div class="foot">'+cyc(p)+'<span class="more">'+t().view+' →</span></div></div></button>';
+}
+
+function render(){
+  const c = counts(), T0 = t();
+  document.documentElement.lang = lang;
+  const nProj = P.reduce((n,p) => n + (p.en.subs ? p.en.subs.length : 1), 0); // client sub-projects count individually
+  const st = T0.st.map((s,i) => [i===1?String(nProj):i===2?String(c.dev):s[0], s[1], i===2?'b':'']);
+  const span = [2016, 2027], pct = v => ((v - span[0]) / (span[1] - span[0]) * 100).toFixed(2) + '%';
+  const w = (a,b) => ((b - a) / (span[1] - span[0]) * 100).toFixed(2) + '%';
+  const coHasDev = k => P.some(p => p.co === k && p.kind === 'dev');
+  const coOrder = ['handys','onysoft','iocenter','homecredit','itinvest'];
+
+  $('#app').innerHTML =
+  '<div class="wrap"><header class="top"><div class="sig"><span class="dot dev"></span><b>Galiya Amandyk</b> / '+T0.sig+'</div>'+
+    '<div class="seg" role="group" aria-label="Language"><button data-lang="en" aria-pressed="'+(lang==='en')+'">EN</button><button data-lang="ko" aria-pressed="'+(lang==='ko')+'">한국어</button></div></header>'+
+  '<section class="hero"><div><p class="eyebrow">'+T0.eyebrow+'</p><h1>'+T0.h1+'</h1><p class="lede">'+T0.lede+'</p>'+
+    '<dl class="stats">'+st.map(s => '<div class="'+s[2]+'"><dt>'+esc(s[1])+'</dt><dd>'+esc(s[0])+'</dd></div>').join('')+'</dl></div>'+
+    '<figure style="margin:0"><div class="compare" id="cmp"><div class="built">'+uiSketch('built')+'</div><div class="wire" id="cmp-wire" style="position:absolute;inset:0">'+uiSketch('wire')+'</div>'+
+    '<span class="tag l">'+T0.plan+'</span><span class="tag r">'+T0.build+'</span><div class="handle" id="cmp-h"><span>‹›</span></div>'+
+    '<input type="range" id="cmp-r" min="0" max="100" value="50" aria-label="'+esc(T0.cap)+'"></div>'+
+    '<figcaption class="cap">'+esc(T0.cap)+'</figcaption></figure></section></div>'+
+  '<nav class="rail" aria-label="Filter projects"><div class="wrap"><div class="filters">'+
+    [['all',T0.all,''],['pm',T0.pm,'pm'],['dev',T0.dev,'dev']].map(([k,l,d]) => '<button class="fb" data-kind="'+k+'" aria-pressed="'+(kindF===k)+'">'+(d?'<span class="dot '+d+'"></span>':'')+esc(l)+' <span class="n">'+c[k]+'</span></button>').join('')+
+    '</div><span class="coftr'+(coF?' on':'')+'">'+(coF?esc(T0.co)+': <b>'+esc(CO[coF][lang])+'</b> <button data-clear="1">'+esc(T0.clear)+'</button>':'')+'</span>'+
+    '<div class="legend"><span><i style="background:var(--plan)"></i>'+T0.lgPm+'</span><span><i style="background:var(--build)"></i>'+T0.lgDev+'</span></div></div></nav>'+
+  '<main class="wrap"><div class="sec-h"><h2>'+T0.work+'</h2><p>'+T0.workSub+'</p></div>'+
+    '<div class="grid" id="grid"></div>'+
+  '<section class="career"><div class="sec-h"><h2>'+T0.career+'</h2><p>'+T0.careerSub+'</p></div><div class="track">'+
+    '<div class="lanes"><div class="lane">'+coOrder.map(k => '<button class="bar work'+(coHasDev(k)?' dv':'')+'" data-co="'+k+'" aria-pressed="'+(coF===k)+'" style="left:'+pct(CO[k].from)+';width:'+w(CO[k].from,CO[k].to)+'" title="'+esc(CO[k][lang]+' · '+CO[k].y)+'" aria-label="'+esc(CO[k][lang])+'"></button>').join('')+'</div>'+
+    '<div class="lane">'+STUDY.map(s => '<span class="bar study" style="left:'+pct(s.from)+';width:'+w(s.from,s.to)+'" title="'+esc(s[lang]+' · '+s.y)+'"></span>').join('')+'</div></div>'+
+    '<div class="axis">'+[2016,2018,2020,2022,2024,2026].map(y => '<span style="left:'+pct(y)+'">'+y+'</span>').join('')+'</div>'+
+    '<div class="cos">'+coOrder.map(k => '<button class="co" data-co="'+k+'" aria-pressed="'+(coF===k)+'"><span><span class="dot '+(coHasDev(k)?'dev':'pm')+'" style="display:inline-block;margin-right:6px"></span>'+esc(CO[k][lang])+'</span><small>'+CO[k].y+' · '+P.filter(p => p.co===k).length+'</small></button>').join('')+
+    STUDY.map(s => '<span class="co study"><span>'+esc(s[lang])+'</span><small>'+s.y+'</small></span>').join('')+'</div></div></section>'+
+  '<footer class="contact"><div><h2>'+T0.contact+'</h2><p class="lead">'+T0.lead+'</p></div>'+'<div class="bcard"><svg class="it" viewBox="0 0 460 170" preserveAspectRatio="xMaxYMid slice" aria-hidden="true"><g fill="none" stroke="var(--plan)" stroke-width="1.4" opacity=".45"><path d="M460 26H372L352 46H292"/><path d="M460 64H410L392 82H338"/><path d="M460 112H396L378 130H312"/><path d="M460 150H352"/><path d="M424 0V16L404 36"/><path d="M440 170V140L452 128"/></g><g fill="var(--plan)" opacity=".55"><circle cx="292" cy="46" r="3"/><circle cx="338" cy="82" r="3"/><circle cx="312" cy="130" r="3"/><circle cx="352" cy="150" r="3"/><circle cx="404" cy="36" r="3"/></g><g font-family="JetBrains Mono, monospace" fill="var(--build)" opacity=".5"><text x="404" y="104" font-size="20">&lt;/&gt;</text><text x="336" y="20" font-size="11">{ api }</text><text x="372" y="165" font-size="10">0101 1001</text></g></svg><div class="ph"><img src="images/galiya-card.png" alt="Galiya Amandyk"></div><div class="info"><p class="nm">'+(lang==='ko'?'아만드크 갈리아':'Galiya Amandyk')+'</p><p class="ttl">'+T0.ttl+'</p>'+'<div class="lines"><div class="ln"><span class="k">'+T0.kE+'</span><span class="v" id="mail">'+EMAIL+'</span><button class="cp" data-copy="mail">'+T0.copy+'</button></div>'+'<div class="ln"><span class="k">'+T0.kP+'</span><span class="v" id="phone">'+PHONE+'</span><button class="cp" data-copy="phone">'+T0.copy+'</button></div></div></div></div></footer></main>';
+
+  renderGrid(); bindCompare();
+}
+function renderGrid(){
+  const v = visible();
+  $('#grid').innerHTML = v.length ? v.map(cardHTML).join('') : '<p style="color:var(--ink-3)">'+t().empty+'</p>';
+}
+function refreshFilters(){
+  document.querySelectorAll('.fb').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.kind === kindF)));
+  document.querySelectorAll('[data-co]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.co === coF)));
+  const f = $('.coftr'); f.classList.toggle('on', !!coF);
+  f.innerHTML = coF ? esc(t().co)+': <b>'+esc(CO[coF][lang])+'</b> <button data-clear="1">'+esc(t().clear)+'</button>' : '';
+  renderGrid();
+}
+function bindCompare(){
+  const r = $('#cmp-r'), wire = $('#cmp-wire'), h = $('#cmp-h');
+  const set = v => { wire.style.clipPath = 'inset(0 '+(100 - v)+'% 0 0)'; h.style.left = v + '%'; };
+  r.addEventListener('input', () => set(+r.value)); set(50);
+  if (!RM){ let v = 50, dir = 1, n = 0; const tick = () => { if (r.dataset.touched) return; v += dir * .6; if (v > 70 || v < 30) { dir *= -1; n++; } set(v); r.value = v; if (n < 2) requestAnimationFrame(tick); else set(50); };
+    r.addEventListener('pointerdown', () => r.dataset.touched = 1); r.addEventListener('keydown', () => r.dataset.touched = 1); setTimeout(() => requestAnimationFrame(tick), 600); }
+}
+
+/* ---------- detail ---------- */
+function detailHTML(p){
+  const x = L(p), T0 = t(), sh = shotsOf(p.id), i = P.indexOf(p), dev = p.kind === 'dev';
+  let h = '<div class="dh"><div class="nav"><button class="ib" data-nav="-1" aria-label="'+T0.prev+'" title="'+T0.prev+'">←</button><button class="ib" data-nav="1" aria-label="'+T0.next+'" title="'+T0.next+'">→</button></div>'+
+    '<span class="mono" style="font-size:12px;color:var(--ink-3)">'+String(i+1).padStart(2,'0')+' / '+P.length+'</span><button class="ib" data-close="1" aria-label="'+T0.close+'" title="'+T0.close+'">✕</button></div><div class="db">';
+  h += '<div><div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center">'+kindTag(p)+nbTag(p)+'</div><h2 id="d-title">'+esc(x.t)+'</h2><p class="one">'+esc(x.one)+'</p>'+(p.win?'<div class="win big"><b>↗ '+winN(p.win)+'</b><span>'+esc(p.win[lang])+'</span></div>'+(p.win.note?'<p class="win-note">'+esc(p.win.note[lang])+'</p>':''):'')+'</div>';
+  h += '<dl class="facts"><div><dt>'+T0.company+'</dt><dd>'+esc(CO[p.co][lang])+'</dd></div><div><dt>'+T0.period+'</dt><dd class="mono" style="font-size:13px">'+CO[p.co].y+'</dd></div><div><dt>'+T0.role+'</dt><dd>'+esc(x.role)+'</dd></div><div><dt>'+T0.where+'</dt><dd>'+esc(CO[p.co].place[lang])+'</dd></div></dl>';
+  if (sh.length || assets) h += '<div class="blk"><h4>'+T0.screens+'</h4><div class="gal">'+
+    sh.map((s,k) => '<div class="shot"><button class="open" data-lb="'+k+'" aria-label="'+esc(x.t)+' '+(k+1)+'"><img src="'+esc(srcOf(s))+'" alt="'+esc(x.t)+' '+(k+1)+'" loading="lazy"></button>'+(assets?'<button class="rm" data-rm="'+k+'">'+T0.rm+'</button>':'')+'</div>').join('')+
+    (assets ? '<label class="drop" id="drop" for="shot-in"><b>+</b><span>'+T0.add+'</span><small>'+T0.addHint+'</small></label><input type="file" id="shot-in" class="vh" accept="image/*" multiple>' : '')+
+    '</div>'+(assets?'<p class="note">'+T0.addNote+'</p>':'')+'</div>';
+  h += '<div class="blk"><h4>'+T0.flow+'</h4><div class="flow'+(dev?' dv':'')+'" style="--dur:'+(p.flow.length*0.7)+'s">'+p.flow.map((f,k) => (k?'<span class="ar">→</span>':'')+'<span class="nd" style="--d:'+(k*0.7).toFixed(2)+'s">'+esc(f)+'</span>').join('')+'</div></div>';
+  h += '<div class="blk"><h4>'+T0.stages+'</h4><div class="stages">'+SK.map((k,j) => '<div class="'+(p.st.includes(k)?'on'+(k==='build'?' bd':''):'')+'">'+STAGES[lang][j]+'</div>').join('')+'</div></div>';
+  h += '<div class="blk"><h4>'+T0.did+'</h4><ul class="did">'+x.b.map(b => '<li>'+esc(b)+'</li>').join('')+'</ul></div>';
+  if (x.subs) h += '<div class="blk"><h4>'+T0.subs+'</h4><div class="subs">'+x.subs.map(s => '<div'+(s[2]?' class="nb"':'')+'>'+esc(s[0])+'<small>'+esc(s[1])+'</small>'+(s[2]?'<span class="nbadge pm sm"><b>★</b>'+esc(t().nbSub)+'</span>':'')+'</div>').join('')+'</div></div>';
+  h += '<div class="blk"><h4>'+T0.stack+'</h4><div class="chips">'+p.stack.map(s => '<span>'+esc(s)+'</span>').join('')+'</div></div>';
+  if (p.link) h += '<div><a class="btn pri" href="'+esc(p.link)+'" target="_blank" rel="noopener">'+T0.link+' ↗</a></div>';
+  return h + '</div>';
+}
+let lastFocus = null;
+function openP(id, fromHash){
+  const p = P.find(q => q.id === id); if (!p) return;
+  openId = id;
+  let ov = $('#ov');
+  if (!ov){ ov = document.createElement('div'); ov.id = 'ov'; ov.className = 'ov'; ov.innerHTML = '<div class="drawer" role="dialog" aria-modal="true" aria-labelledby="d-title" id="drawer"></div>'; document.body.appendChild(ov);
+    lastFocus = document.activeElement; requestAnimationFrame(() => ov.classList.add('show')); document.body.style.overflow = 'hidden'; }
+  $('#drawer').innerHTML = detailHTML(p); $('#drawer').scrollTop = 0;
+  if (!fromHash && location.hash !== '#'+id) { try { history.replaceState(null, '', '#'+id); } catch(e) { location.hash = id; } }
+  const c = $('#drawer [data-close]'); c && c.focus({preventScroll:true});
+}
+function closeP(){
+  const ov = $('#ov'); if (!ov) return; openId = null;
+  ov.classList.remove('show'); setTimeout(() => ov.remove(), RM ? 0 : 200); document.body.style.overflow = '';
+  try { history.replaceState(null, '', location.pathname + location.search); } catch(e) {}
+  lastFocus && lastFocus.focus && lastFocus.focus({preventScroll:true});
+}
+
+function toast(msg){
+  let el = $('#toast'); if (!el){ el = document.createElement('div'); el.id = 'toast'; el.className = 'toast'; el.setAttribute('role','status'); document.body.appendChild(el); }
+  el.textContent = msg; el.hidden = false; clearTimeout(el._t); el._t = setTimeout(() => el.hidden = true, 3200);
+}
+
+/* ---------- screenshots (editors only) ---------- */
+const RESET = ':root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}';
+function buildDoc(){
+  const json = JSON.stringify(DATA).replace(/</g,'\\u003c');
+  return '<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>'+RESET+'</style></head><body>'+
+    '<title>'+esc(document.title)+'</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n'+
+    $('#pf-fonts').outerHTML+'\n'+$('#pf-style').outerHTML+'\n<div id="app"></div>\n'+
+    '<script type="application/json" id="pf-data">'+json+'<\/script>\n'+
+    '<script id="pf-script">'+$('#pf-script').textContent+'<\/script></body></html>';
+}
+async function persist(msg){
+  if (!art) return false;
+  DATA.savedAt = Date.now();
+  try { sessionStorage.setItem('pf-reopen', openId || ''); } catch(e) {}
+  try { await art.publish(buildDoc()); toast(msg); return true; }
+  catch(err){ toast(err && err.code === 'conflict' ? 'Someone else saved first. The page will reload with their version.' : 'Could not save: '+(err && err.message || 'unknown error')); return false; }
+}
+async function addShots(files){
+  if (!assets || !openId) return;
+  const list = [...files].filter(f => /^image\//.test(f.type));
+  if (!list.length) return toast(lang==='ko' ? '이미지 파일을 선택해 주세요.' : 'Choose image files (PNG or JPG).');
+  const id = openId, out = [];
+  for (let i = 0; i < list.length; i++){
+    toast(t().up(i+1, list.length));
+    try { const a = await assets.upload(list[i]); out.push({id:a.id, url:a.url}); }
+    catch(err){ toast((list[i].name||'File')+': '+(err && err.message || 'upload failed')); }
+  }
+  if (!out.length) return;
+  DATA.shots[id] = shotsOf(id).concat(out);
+  openP(id, true); renderGrid();
+  await persist(t().saved);
+}
+let rmArm = {k:null, at:0};
+async function rmShot(k){
+  if (rmArm.k !== k || Date.now() - rmArm.at > 3000){ rmArm = {k, at:Date.now()}; const b = $('#drawer [data-rm="'+k+'"]'); if (b){ b.textContent = t().rm2; setTimeout(() => { if (b.isConnected) b.textContent = t().rm; }, 3000); } return; }
+  rmArm = {k:null, at:0};
+  const id = openId, s = shotsOf(id)[k]; if (!s) return;
+  DATA.shots[id] = shotsOf(id).filter((_, j) => j !== k);
+  openP(id, true); renderGrid();
+  if (await persist(t().removed)) { try { await assets.delete(s.id); } catch(e) {} }
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click', async e => {
+  const el = e.target.closest('button, [data-open], label'); if (!el) return;
+  if (el.dataset.lang){ lang = el.dataset.lang; try { localStorage.setItem('pf-lang', lang); } catch(err) {} render(); if (openId) openP(openId, true); return; }
+  if (el.dataset.kind){ kindF = el.dataset.kind; refreshFilters(); return; }
+  if (el.dataset.co){ coF = coF === el.dataset.co ? null : el.dataset.co; refreshFilters(); $('#grid').scrollIntoView({behavior: RM ? 'auto' : 'smooth', block:'start'}); return; }
+  if (el.dataset.clear){ coF = null; refreshFilters(); return; }
+  if (el.dataset.open){ openP(el.dataset.open); return; }
+  if (el.dataset.close){ closeP(); return; }
+  if (el.dataset.nav){ const i = P.findIndex(p => p.id === openId); openP(P[(i + +el.dataset.nav + P.length) % P.length].id); return; }
+  if (el.dataset.lb != null){ const s = shotsOf(openId)[+el.dataset.lb]; if (!s) return;
+    const lb = document.createElement('div'); lb.className = 'lb'; lb.tabIndex = -1; lb.innerHTML = '<img src="'+esc(srcOf(s))+'" alt="">';
+    lb.addEventListener('click', () => lb.remove()); document.body.appendChild(lb); lb.focus(); return; }
+  if (el.dataset.rm != null){ rmShot(+el.dataset.rm); return; }
+  if (el.dataset.copy){ const tgt = $('#'+el.dataset.copy);
+    try { await navigator.clipboard.writeText(tgt.textContent); toast(t().copied+': '+tgt.textContent); }
+    catch(err){ const r = document.createRange(); r.selectNodeContents(tgt); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast(t().copyFail); }
+  }
+});
+document.addEventListener('mousedown', e => { const ov = $('#ov'); if (ov && e.target === ov) closeP(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape'){ const lb = $('.lb'); if (lb) return lb.remove(); if (openId) closeP(); }
+  if (openId && !$('.lb') && (e.key === 'ArrowRight' || e.key === 'ArrowLeft') && !e.target.matches('input')){ const i = P.findIndex(p => p.id === openId); openP(P[(i + (e.key === 'ArrowRight' ? 1 : -1) + P.length) % P.length].id); }
+});
+document.addEventListener('change', e => { if (e.target.id === 'shot-in' && e.target.files.length){ addShots(e.target.files); e.target.value = ''; } });
+document.addEventListener('dragover', e => { const d = e.target.closest && e.target.closest('#drop'); if (d){ e.preventDefault(); d.classList.add('over'); } });
+document.addEventListener('dragleave', e => { const d = e.target.closest && e.target.closest('#drop'); if (d) d.classList.remove('over'); });
+document.addEventListener('drop', e => { const d = e.target.closest && e.target.closest('#drop'); if (d){ e.preventDefault(); d.classList.remove('over'); addShots(e.dataTransfer.files); } });
+window.addEventListener('hashchange', () => { const id = location.hash.slice(1); if (P.some(p => p.id === id)) openP(id, true); else if (openId) closeP(); });
+
+render();
+let reopen = ''; try { reopen = sessionStorage.getItem('pf-reopen') || ''; sessionStorage.removeItem('pf-reopen'); } catch(e) {}
+const start = location.hash.slice(1) || reopen;
+if (P.some(p => p.id === start)) openP(start, !!location.hash);
+
+/* screenshot editing is locked: the upload and remove controls never appear for anyone.
+   To unlock later, set EDIT_SCREENS to true. */
+const EDIT_SCREENS = false;
+if (EDIT_SCREENS && window.claude && window.claude.use){
+  Promise.all([window.claude.use('assets').catch(() => null), window.claude.use('artifact').catch(() => null)]).then(([a, s]) => {
+    if (a && s){ assets = a; art = s; if (openId) openP(openId, true); }
+  });
+}
+})();
+</script>
+
+</body>
+</html>
