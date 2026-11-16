@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -236,7 +236,7 @@ const DATA = JSON.parse($('#pf-data').textContent);
 DATA.shots = DATA.shots || {};
 const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-let lang = 'en'; try { if (localStorage.getItem('pf-lang') === 'ko') lang = 'ko'; } catch(e) {}
+let lang = 'ko'; try { if (localStorage.getItem('pf-lang') === 'en') lang = 'en'; } catch(e) {}
 let kindF = 'all', coF = null, openId = null;
 let assets = null, art = null; // editor capabilities (null for viewers)
 
